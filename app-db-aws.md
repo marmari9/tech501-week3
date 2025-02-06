@@ -31,6 +31,13 @@
 - Restart the mongod db service:
   - sudo systemctl restart mongod
   - sudo systemctl status mongod
+  - Node:
+ 
+sudo DEBIAN_FRONTEND=noninteractive bash -c "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -"
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
+
+sudo apt-get install npm
 
 ## 3. **Configure MongoDB for Remote Access**
    - Edit MongoDB configuration (`/etc/mongod.conf`):
