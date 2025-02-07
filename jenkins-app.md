@@ -107,3 +107,66 @@
 - You may need to troubleshoot if any issues arise with the Git commands (e.g., permission issues, merge conflicts).
 
 
+# Jenkins Job 3: Continuous Deployment
+
+This guide will show you how to create a Jenkins Job for **Job 3** that automates the deployment process using SCP and SSH to deploy your app to an EC2 instance.
+
+## Steps to Create Jenkins Job 3
+
+### 1. Open Jenkins Dashboard
+- Navigate to your Jenkins web interface.
+
+### 2. Create a New Job
+- Click on **"New Item"** at the left-hand side of the Jenkins dashboard.
+- In the **"Item name"** field, enter a name for your job (e.g., `maram-job3-cd-deploy`).
+- Select **"Freestyle project"** and click **OK**.
+
+### 3. Configure Source Code Management
+- Go to the **"Source Code Management"** section.
+- Select **Git**.
+- Enter your repository URL (e.g., `git@github.com:marmari9/tech501-maram-sparta-app-cicd.git`).
+- Under **Credentials**, select the Git credentials.
+
+### 4. Set Build Triggers
+- Go to the **"Build Triggers"** section.
+- Choose an option (**GitHub hook trigger for GITScm polling**).
+
+### 5. Add Build Step
+- Scroll down to the **"Build"** section.
+- Click on **"Add build step"** and select **"Execute shell"**.
+
+### 6. Insert the SCP and SSH Commands
+In the **"Command"** text box, paste the following:
+
+```bash
+# Copy the app files to EC2
+scp -i /var/jenkins/keys/maram-key-3.pem -r /var/jenkins/workspace/maram-job3-cd-deploy/app/* ubuntu@3.255.128.209:/app/
+
+# Install dependencies and restart the app on EC2
+ssh -i /var/jenkins/keys/maram-key-3.pem ubuntu@3.255.128.209 "cd /app"
+``` 
+
+* Blockers : I had issues with the ssh agent permisshions:
+
+
+![](<Screenshot 2025-02-07 164742.png>)
+
+
+- tried to fix using these codes:
+```bash 
+scp -o StrictHostKeyChecking=no -r /var/jenkins/workspace/maram-job2-ci-merge/app ubuntu@3.255.128.209:/home/ubuntu/repo
+ssh ubuntu@3.255.128.209 << 'EOF'
+	
+	rm -rf /home/ubuntu/repo/app
+	Change to the newly copied app directory
+	cd /home/ubuntu/repo/app
+	ls
+	sudo systemctl restart nginx
+	npm install 
+  npm start
+	pm2 start app.js
+EOF
+```
+- still having issues with the ssh agent.
+
+![alt text](2.png)

@@ -4,6 +4,10 @@
    - Log into AWS Console and launch a new EC2 instance with an appropriate AMI (Ubuntu 22.04 SSD standard).
    - Ensure proper security group settings to allow inbound traffic on SSH (port 22)
    - Create a key pair and use the .pem file to access your instance.
+  ```bash
+  ssh -i "/c/Users/Maram/Downloads/tech501-maram-key-2.pem" ubuntu@34.245.14.9
+```
+
 
 ## install mongodb:
 - Mongo db version 7.0.6.
