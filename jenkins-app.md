@@ -78,9 +78,10 @@
 3. In the **Command** field, enter the following shell script to checkout and merge the code:
 
     ```bash
-    git checkout main
-    git fetch origin
-    git merge origin/main
+        git checkout main
+        git pull origin main
+        git merge --ff-only origin/dev
+        git push origin main
     ```
 
    This script will:
