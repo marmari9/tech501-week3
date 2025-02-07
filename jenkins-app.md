@@ -9,9 +9,11 @@
 
 
 # why use jenkins over other tools:
-## jenkins is not a CICD tool it is a automation server
+- jenkins is not a CICD tool it is a automation server
 - free, open source
 - powerful plugins
+
+**Contin delivery is in a testing environment while conti deployment is a production, the delivery provides approval for next stage**
 
 
 ## how to build a pipeline:
@@ -20,6 +22,11 @@
 - click on the project and change the environment to bash 
 - upload your code (eg, uname -a)
 - chack if the pipline is built
+
+
+![alt text](image.png)
+
+
 
 ## Step 1 : Create job1 on jenkins and connect to GitHub repo
 
@@ -35,7 +42,7 @@
     - On braches to build: change to */main
     - Under **Build Environment**, check **provide Node and npm bin/folder to PATH**, select NodeJS version 20.
     - select secure bash shell and run the following:
-      - ```bash 
+    ```bash 
       cd app 
       npm install 
       npm test
@@ -86,7 +93,7 @@
 
 1. Once you've configured everything, click **Save** to create the job.
 
-## Step 6: Trigger the Job
+## Step 5: Trigger the Job
 
 1. Manually trigger the job by clicking **Build Now**.
 2. Jenkins will run the build step, fetch the latest code, and merge it.
