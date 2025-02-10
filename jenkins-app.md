@@ -170,5 +170,9 @@ git push origin dev
 - These changes should trigger **Job 1 → Job 2 → Job 3** in Jenkins **automatically**, review jenkins page jobs are seen in the q 
 - Refresh the app webpage; changes should be visible  
 
+
+![alt text](<image (4).png>)
+
+
 - to include the posts page in the pipeline, use the export command on job 3 excute shell.
 ---
