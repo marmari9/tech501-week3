@@ -176,3 +176,10 @@ git push origin dev
 
 - to include the posts page in the pipeline, use the export command on job 3 excute shell.
 ---
+
+- required dependincies:
+- JDK 
+- 8080 TO ACCESS JENKINS
+- NODEJS
+- PLUGINS ON SERVER
+- 
